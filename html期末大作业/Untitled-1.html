@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>后台管理系统登录界面</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+
+background-size:100% 100%;
+background-attachment: fixed;
+overflow: hidden;
+background-repeat: no-repeat;
+background-image:url(img/beijing1.jpg);
+}
+.denglukuang{
+    position: absolute;
+	top: 100px;
+	left: 620px;
+	width: 300px;
+	height: 450px;
+	background-color: #feffff;
+	opacity: 0.6;
+	margin-bottom: 30px;
+	
+}
+#denglu{
+	opacity: 1;
+	position: relative;
+    font-size: 50px;
+	font-family: "黑体";
+	color: rgb(0, 0, 0);
+	margin-bottom: 30px;
+	margin-top: 30px;
+	margin-left: 100px;
+	
+}
+.dengluanniu a button {
+	width: 100%;
+	height: 50px;
+	background-color: #666666;
+	border: none;
+	color: white;
+	font-size: 10px;
+	margin-bottom: 30px;
+	margin-top: 30px;	
+	margin-left: -2px;
+	border-radius:15px;
+	position: relative;
+}
+.shurukuang {
+	margin-top: 10px;	
+}
+.zhucequ{
+	font-size: 10px;
+	position:relative;
+	margin-top: 30px;	
+	margin-left: 80px;
+}
+.wangjimima{
+    font-size: 10px;
+	position:absolute;
+	margin-top: 30px;	
+	margin-left: 30px;
+}
+
+
+</style>
+
+</head>
+<body>
+ <div class="denglukuang">
+	<div id="denglu">
+        <img src="img/logo.JPG" style="width: 100px;height: 100px;">
+		<p class="p1" style="font-family: STXingkai;margin-top: 20px;">登录</p>
+	</div>
+	<form method="post" action="main.php">
+	<div class="shurukuang">
+		<img th:src="@{/static/cloud.png}" src="image/yonghu.png" width="20" height="20" alt=""/>
+		<input type="text"
+			placeholder="输入用户名" id="yonghuming" name="username" style="width: 250px;margin-left: 10px;height: 30px;">
+		<span ></span>
+	</div>
+	<div class="shurukuang">
+		<img th:src="@{/static/lantern.png}" src="image/mima.png" width="20" height="20" alt=""/>
+		<input type="password"
+			placeholder="输入用户密码" name="password" style="width: 250px;margin-left: 10px;height: 30px;">
+	</div>
+	<div class="dengluanniu">
+		<a href="houtaidaohang.html" id="loginButton"><button onclick="checkCookie()" style="font-size: 20px;font-family: STXingkai;">登 录</button></a>
+        <a href="register.html" class="zhucequ"><p>没有账号，点击此处注册</p></a>
+        <a href="guanyuwomen.html" class="zhucequ"><p>关于我们</p></a>
+    </div>
+     </form>
+ </div> 
+
+</body>
+</html>
+
+
+<!--
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登录界面</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+
+background-size:100% 100%;
+background-attachment: fixed;
+overflow: hidden;
+background-repeat: no-repeat;
+background-image:url(img/beijing3.jpg);
+}
+.denglukuang{
+    position: absolute;
+	top: 7.5%;
+	left: 15%;
+	width: 70%;
+	height: 85%;
+	background-color: #feffff;
+	opacity: 0.6;
+	margin-bottom: 30px;
+	
+}
+
+
+
+</style>
+
+</head>
+<body>
+ <div class="denglukuang">
+	
+ </div> 
+
+</body>
+</html>
+
+
+
+
+
+-->
+
+
+
+

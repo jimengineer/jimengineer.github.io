@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="layui-v2.5.6/layui/css/layui.css" media="all">
+    <script src="layui-v2.5.6/layui/layui.js" charset="utf-8"></script>
+    <script src="echarts.min.js"></script>
+    <style type="text/css">
+    .zhongjian{
+      width: 500px;
+      height: 400px;
+      margin-top: 100px;
+      margin-left: 150px;
+      position: fixed;
+    }
+    #aaa{
+       color: black;
+        }
+        #aaa:hover {color: #323361 ;background-color:whitesmoke;font-weight: bolder;}
+        #bbb:hover {color: #323361 ;background-color:whitesmoke;font-weight: bolder;}
+        #ccc:hover {color: #323361 ;font-weight: bolder;}
+    </style>
+    <title>WEB前端个人简历</title>
+
+    <script>
+        $(function(){
+        
+            $("#back_top").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+        
+                $("html,body").animate({scrollTop:"0px"},200);
+        
+            }); 
+        
+        });
+        </script>
+    <script>
+       
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
+     
+        });
+        var isShow = true;  //定义一个标志位
+        $('.kit-side-fold').click(function(){
+            //选择出所有的span，并判断是不是hidden
+            $('.layui-nav-item span').each(function(){
+                if($(this).is(':hidden')){
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+            });
+            //判断isshow的状态
+            if(isShow){
+                $('.layui-side.layui-bg-black').width(60); //设置宽度
+                $('.kit-side-fold i').css('margin-right', '70%');  //修改图标的位置
+                //将footer和body的宽度修改
+                $('.layui-body').css('left', 60+'px');
+                $('.layui-footer').css('left', 60+'px');
+                //将二级导航栏隐藏
+                $('dd span').each(function(){
+                    $(this).hide();
+                });
+                //修改标志位
+                isShow =false;
+            }else{
+                $('.layui-side.layui-bg-black').width(200);
+                $('.kit-side-fold i').css('margin-right', '10%');
+                $('.layui-body').css('left', 200+'px');
+                $('.layui-footer').css('left', 200+'px');
+                $('dd span').each(function(){
+                    $(this).show();
+                });
+                isShow =true;
+            }
+        });
+        
+        function opens(obj){
+    for(var i = 1;i<=9;i++){
+    if(i == obj){document.getElementById("dis"+i).style.display="block"
+    }else
+    document.getElementById("dis"+i).style.display="none"
+    }
+    }
+    </script>
+</head>
+<!--<button class="layui-btn layui-nav-item layui-nav-itemed" style="position: fixed;width: 70px;height: 70px;top: 60%;left: 3%;background-color: #323361;color: white;padding: 0;">优化简历</button>
+<button class="layui-btn layui-nav-item " style="position: fixed;width: 70px;height: 70px;top: 70%;left: 2.3%;background-color: white;color: #323361;padding: 0px;"><a href="#xia1" >返回顶部</a></button>
+-->
+<body >
+  <div >
+  <div class="layui-side layui-bg-black" style="margin-left: 22%;color: #000;" >
+        <div class="layui-side-scroll" >
+          <ul class="layui-nav layui-nav-tree"  lay-filter="test" >
+            <li class="layui-nav-item layui-nav-itemed" >
+              <a class=""  style="height: 220px;">
+                <div style="width: 160px;margin-top: 10%;color: #323361;"><b style="font-size: 1.5em;">特色美食</b></div>
+                <div style="font-size: 0.5em;margin-top: -5%;color: #323361;">更新：2020-11-18</div>
+                <div style="font-size: 0.5em;margin-top: -14%;color: #323361;">公开：对所有公开</div>
+                <div><img src="img/xing.png" style="margin-top: -27%;height: 20px;"></div>
+                <p style="font-size: 0.5em;margin-top: -27%;color: #323361;">瑞安特色></p>
+                <button type="submit" class="layui-btn" href="" lay-submit=""  style="background-color: #323361;margin-left: -2px;margin-top: -10px;height: 30px;padding-bottom: 23%;">刷新</button>
+                <button class="layui-btn layui-btn-primary" style="margin-top:-10px;height: 30px;padding-bottom: 23%;">预览</button>
+               
+              </a>
+              <dl class="layui-nav-child" >
+                <dd id="dd1"><a id="da1" style="color: #323361;" href="javascript:;" onclick="opens(1)">双炊糕</a></dd>
+                <dd><a style="color: #323361;"href="javascript:;" onclick="opens(2)">酱鸭舌</a></dd> 
+                <dd><a style="color: #323361;"href="javascript:;" onclick="opens(3)">灯盏糕</a></dd>
+                <dd><a style="color: #323361;"href="javascript:;" onclick="opens(4)">麦饼</a></dd> 
+                <dd><a style="color: #323361;"href="javascript:;" onclick="opens(5)">瘦肉丸</a></dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+       
+      </div>
+    
+      <iframe id="dis1" src="shuangchuigao.html" style="border: medium none;margin-left: 36%;" width="700" height="700" scrolling="no"></iframe>
+      <iframe id="dis2" src="jiangyashe.html" style="border: medium none;margin-left: 36%;" width="700" height="700" scrolling="no"></iframe>
+      <iframe id="dis3" src="dengzhangao.html" style="border: medium none;margin-left: 36%;" width="700" height="700" scrolling="no"></iframe>
+<iframe id="dis4" src="maibing.html" style="border: medium none;margin-left: 36%;" width="700" height="700" scrolling="no"></iframe>
+<iframe id="dis5" src="shourouwan.html" style="border: medium none;margin-left: 36%;" width="700" height="700" scrolling="no"></iframe>
+
+</body>
+</html>
