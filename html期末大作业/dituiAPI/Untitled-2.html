@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>瑞安</title>
+<style>
+body,html,#container{ margin:0;width: 100%;height: 100%}
+</style>
+  <style type="text/css">
+        .amap-logo{
+        display: none;
+        opacity:0 !important;
+        }
+        .amap-copyright {
+            opacity:0;
+        }
+        .amap-content {
+            width: 100px;
+            height: 100px;
+        }
+        .amap-marker-label{
+      position: absolute;
+      z-index: 2;
+      border: 1px solid rgba(0,0,0,0);
+      background-color:rgba(0,0,0,0);
+      white-space: nowrap;
+      cursor: default;
+      padding: 3px;
+      font-size: 12px;
+      line-height: 14px;
+   }
+   .main{
+       width: 160px;
+       height: 100px;
+       margin: 0;
+      padding:0
+   }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script language="javascript" src="https://webapi.amap.com/maps?v=1.4.14&key=ea68d6f0d8250b4f4d4dbe1642e9dfbc&plugin=Map3D,AMap.DistrictSearch"></script> 
+<script language="javascript">
+
+    var opts = {
+        subdistrict: 0,
+        extensions: 'all',
+        level: 'city'
+    };
+    //利用行政区查询获取边界构建mask路径
+    //也可以直接通过经纬度构建mask路径
+    var district = new AMap.DistrictSearch(opts);
+    district.search('瑞安市', function(status, result) {
+        var bounds = result.districtList[0].boundaries;
+        var mask = []
+        for(var i =0;i<bounds.length;i+=1){
+            mask.push([bounds[i]])
+        }
+      //本来这里是map    下中间
+      var map = new AMap.Map("container", {mapStyle: 'amap://styles/73e8910c1f92c289c0b627964b8a5961',resizeEnable: true,zoom:10.5,center:[120.52494,27.826466]});
+      var p = [{ position:[120.632937,27.767832], title: '瑞安外滩', address: '查看攻略',url:'../img/waitan.jpg', gonglue: 'gonglue/d/ningbo/dongqianhu/dongqianhu.html'},
+                { position:[120.728406,27.853628], title: '大罗山', address: '查看攻略',url:'image/daluoshan.jpg', gonglue: 'gonglue/d/ningbo/songlanshanhaibindujiaqu/songlanshanhaibindujiaqu.html' },
+                { position:[120.350579,27.829797], title: '花岩', address: '查看攻略',url:'image/huayan.jpg', gonglue: 'gonglue/n/wenzhou/yuliaofengjingqu/yuliaofengjingqu.html' },
+                { position:[120.537987,27.876438], title: '瑞安桐溪', address: '查看攻略',url:'image/tongxi.jpg', gonglue: 'gonglue/n/wenzhou/yuliaofengjingqu/yuliaofengjingqu.html' },
+                { position:[120.655575,27.774914], title: '温瑞塘河', address: '查看攻略',url:'../img/tanghe2.jpg', gonglue: 'gonglue/n/lishui/jinyunxiandudinghufeng/jingyunxiandudinghufeng.html' },
+                //换到最后了
+            ]; 
+    var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+    var icon = new AMap.Icon({
+         size: new AMap.Size(25, 34),
+         image: 'image/m.png',
+         imageSize: new AMap.Size(20, 32) 
+	});
+    for (var i = 0, marker; i < p.length; i++) {
+        var position=p[i].position;
+        var marker = new AMap.Marker({
+            position: position,
+            icon: icon ,
+            map: map
+        });
+        marker.setMap(map);
+        marker.title=p[i].title;
+        marker.url=p[i].url;
+        marker.address=p[i].address;
+        marker.gonglue=p[i].gonglue;
+        marker.on('click', markerClick);
+        marker.emit('click', {target: marker});
+        marker.setLabel({          offset: new AMap.Pixel(-15, 30),  content:"<p style='color:#c4c6d4'>"+p[i].title+"</p>"       });
+    }
+    function markerClick(e) {
+        //infoWindow.setContent(e.target.content);
+        infoWindow.setContent("<ul class='main'><td> <span style='color:black;font-family: STXingkai;'>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+e.target.title+"</span></td>" 
+				         + "<td>  &nbsp;&nbsp;&nbsp;&nbsp;<span style='color:blue'>"+"<img style='width:90%;height:50%' src='"+e.target.url+"'>"+"<br>"+"  </span></td>" 
+				         + "<td> <a style='color:rgb(32, 33, 61);font-family: STXingkai;margin-left:35px' href='"+e.target.gonglue+"'>"+e.target.address +"  </a></td></ul>");
+
+        infoWindow.open(map, e.target.getPosition());
+    }
+  
+
+        for(var i =0;i<bounds.length;i+=1){
+            new AMap.Polyline({
+                path:bounds[i],
+                strokeColor:'white',
+                strokeWeight:4,
+                map:map
+            })
+        }
+    });
+    </script>
+</body>
+</html>
